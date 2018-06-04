@@ -12,7 +12,8 @@ btn.addEventListener('click', submitted);
 name.addEventListener('keypress',function(e){
     const key = e.keyCode;
     if(key === 13){
-        submitted
+        e.preventDefault();
+        submitted();
     }
 });
 
