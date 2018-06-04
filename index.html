@@ -3,16 +3,22 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Working With Forms</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
 </head>
 <body>
-    <h1>SpellBook</h1>
-    <button>Change Text</button>
+    <h1 id= "instruction"> Fill out the form below for a custom message.</h1>
+    
 
-
-
+    <form id = "form">
+        What is your name: <input type = "text" id="name"/><br/>
+        What is your favorite food(typed in plural form):
+         <input type = "text" id="food"><br/>
+         <input type = "button" value = "submit" id = "btn">
+    </form>
+    <h1 id="greeting"></h1>
+  
     <script src="index.js"></script>
 </body>
 </html>
