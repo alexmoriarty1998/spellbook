@@ -1,8 +1,3 @@
-/**
- when using the enter key to submit the form, the code runs,
- for about half a second and then stops working? The button 
- works fine though for some reason.
- */
 const btn = document.getElementById('btn');
 const message = document.getElementById('greeting');
 const name = document.getElementById('name');
@@ -22,7 +17,7 @@ function submitted()
 {
     if(name.value.length < 1)
     {
-        alert('I think you forgot to fill out some of the form, complete it before submitting');
+        alert('I think you forgot to fill out some of the form, complete it before submitting.');
     }
     else
     {
