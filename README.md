@@ -19,3 +19,28 @@ with the text that you type in the text input.
 
 * Make sure it works when you hit enter on the keyboard
 not just when you click the button. 
+
+## Day 2 Homework
+
+* Add a second field of your choice to the form.
+
+## bonus credit
+
+look up 'document.createElement and appendChild, and try adding the list items that way, instead of with innerHTML
+
+### super mega bonus credit
+
+Display each value in the list item (the name, whatever other field you add) in separate elements, and style them differently somehow. 
+
+for example:
+
+
+```html
+<li>
+    <span class = "spellName"> Fireball </span>
+    <span class = "level"> lvl 4 </span>
+</li>
+```
+
+
+### build each new element 
