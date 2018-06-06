@@ -1,31 +1,37 @@
-
 const form = document.querySelector('form')
 
-const changeHeading = function(ev) {
+const handleSubmit = function(ev) {
   ev.preventDefault()
 
-  const form = ev.target
-  const spellName = form.spellName.value
-  const spellLevel = form.level.value
-  
+  const f = ev.target
+  const spellName = f.spellName.value
+  const level = f.level.value
 
+  const list = document.querySelector('#spells')
 
+  const nameSpan = document.createElement('span')
+  nameSpan.textContent = spellName
+  nameSpan.classList.add('spellName')
 
-  if(spellName.length > 0 && spellLevel.length > 0){
-    //spellsDiv.innerHTML += `<li>${spellName}, level ${spellLevel} required.</li>`
-    const newItem = document.createElement("LI");
-    const textNode = document.createTextNode(`${spellName}, level ${spellLevel} required.`);
-    newItem.appendChild(textNode);
-    const spellsList = document.querySelector('#spells');
-    spellsList.insertBefore(newItem, spellsList.childNodes[0]);
-  } else{
-    alert("you've left one of the fields empty. Please fill out both to submit.")
-  }
-  
-  form.reset()
+  const levelSpan = document.createElement('span')
+  levelSpan.textContent = level
+  levelSpan.classList.add('level')
+
+  const item = document.createElement('li')
+  item.classList.add('spell')
+  item.appendChild(nameSpan)
+  item.appendChild(levelSpan)
+
+  list.appendChild(item)
+
+  f.reset()
 }
 
-form.addEventListener('submit', changeHeading)
+form.addEventListener('submit', handleSubmit)
+
+
+
+
 
 
 
