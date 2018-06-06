@@ -1,14 +1,19 @@
 const form = document.querySelector('form')
 
+const renderProperty =  function(name, value)
+{
+  const el = document.createElement('span')
+  el.textContent = value
+  el.classList.add('name')
+  return el
+}
+
 const handleSubmit = function(ev) {
   ev.preventDefault()
-
   // the source of the event we are listening for
   const f = ev.target
-
   // the value submitted into the field asking for the name of the spell 
   const spellName = f.spellName.value
-
   // the value submitted into the field asking for the level of the spell
   const level = f.level.value
 
@@ -27,6 +32,8 @@ const handleSubmit = function(ev) {
   const levelSpan = document.createElement('span')
   levelSpan.textContent = level
   levelSpan.classList.add('level')
+  
+  
 
   // creates a list which holds the values of both spans above, placed within the original ul 
   const item = document.createElement('li')
@@ -39,6 +46,7 @@ const handleSubmit = function(ev) {
 }
 
 form.addEventListener('submit', handleSubmit)
+
 
 
 
