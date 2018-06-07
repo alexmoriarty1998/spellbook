@@ -1,3 +1,6 @@
+/*
+this commit was just because I did not want the message to just be a period that was a mistake
+*/
 const spells = []
 const app = 
 {
