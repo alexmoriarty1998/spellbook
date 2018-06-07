@@ -1,4 +1,6 @@
 const spells = []
+let spellCount = 0
+let buttonCount = 0
 const app = 
 {
   init: function() {
@@ -12,6 +14,9 @@ const app =
     const el = document.createElement('span')
     el.textContent = value
     el.classList.add(name)
+    el.setAttribute("id", 'spell${buttonCount}')
+  
+  
     return el
   },
 
@@ -26,13 +31,24 @@ const app =
     })
 
     const item = document.createElement('li')
+    const button = document.createElement('button')
+    button.innerText = 'x'
+    button.classList.add('button')
+    button.setAttribute("id", buttonCount)
+    buttonCount++
+    let sendItem = true
+    button.addEventListener('click', function(ev){
+      const child = ev.target.parentNode
+      child.parentNode.removeChild(child)
+    })
+    item.appendChild(button)
     item.classList.add('spell')
 
     // append each <span> to the <li>
     childElements.forEach(el => {
       item.appendChild(el)
     })
-
+    
     return item
   },
 
@@ -47,12 +63,13 @@ const app =
     }
 
     spells.push(spell)
-    console.log(spells)
 
     const item = this.renderItem(spell)
 
     const list = document.querySelector('#spells')
     list.appendChild(item)
+    
+    
 
     f.reset()
   },

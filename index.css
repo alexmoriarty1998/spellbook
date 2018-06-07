@@ -154,3 +154,11 @@ input.small {
 .level {
   color: cornflowerblue;
 }
+
+.button{
+  text-align: center;
+  background-color: whitesmoke;
+  color: red;
+  font-family: fantasy;
+  font-size: 25px;
+}
