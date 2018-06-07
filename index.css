@@ -139,21 +139,17 @@ input.small {
   flex-grow: 1;
 }
 
-.spell{
+.spell {
   display: flex;
   justify-content: space-between;
-  overflow-x: ellipsis;
-  max-width: 80%;
-
 }
 
-.spellName {
+.spell .name {
   text-decoration: underline;
   max-width: 80%;
-  overflow: hidden;
-  overflow-x: ellipsis;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
   padding-left: 0.1em;
-
 }
 .level {
   color: cornflowerblue;
