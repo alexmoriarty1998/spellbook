@@ -146,19 +146,32 @@ input.small {
 
 .spell .name {
   text-decoration: underline;
-  max-width: 80%;
+  width: 80%;
   overflow-x: hidden;
   text-overflow: ellipsis;
   padding-left: 0.1em;
+  white-space: nowrap;
 }
 .level {
   color: cornflowerblue;
+  padding: 0 0.25em;
 }
 
-.button{
-  text-align: center;
-  background-color: whitesmoke;
-  color: red;
-  font-family: fantasy;
-  font-size: 25px;
+button.delete {
+  background-color: #ff3333;
+  color: white;
+}
+
+button.fav {
+  background-color: #F8BE3D;
+  color: black;
+}
+
+.template {
+  display: none;
+}
+
+.favorites{
+  text-shadow: 2px 2px black;
+  color:#F8BE3D;
 }

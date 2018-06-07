@@ -1,14 +1,11 @@
-/*
-this commit was just because I did not want the message to just be a period that was a mistake
-*/
-
-const app = 
-{
+const app = {
   init: function() {
+    this.spells = []
+    this.template = document.querySelector('.spell.template')
+
     const form = document.querySelector('form')
     form.addEventListener('submit', ev => {
       this.handleSubmit(ev)
-      this.spells = []
     })
   },
 
@@ -16,39 +13,61 @@ const app =
     const el = document.createElement('span')
     el.textContent = value
     el.classList.add(name)
+    el.setAttribute('title', value)
     return el
   },
 
   renderItem: function(spell) {
-    // ['name', 'level']
+    const item = this.template.cloneNode(true)
+    item.classList.remove('template')
+
+    // ['name', 'level', etc.]
     properties = Object.keys(spell)
 
-    // collect an array of renderProperty's return values
-    // (an array of <span> elements)
-    const childElements = properties.map(property => {
-      return this.renderProperty(property, spell[property])
+    // Replace the appropriate values in each <span>
+    properties.forEach(property => {
+      const el = item.querySelector(`.${property}`)
+      el.textContent = spell[property]
+      el.setAttribute('title', spell[property])
     })
 
-    const item = document.createElement('li')
-    const button = document.createElement('button')
-    button.innerText = 'x'
-    button.classList.add('button')
-    let sendItem = true
-    button.addEventListener('click', function(ev)
-    {
-      const child = ev.target.parentNode
-      child.parentNode.removeChild(child)
-      this.spells.splice(spells.indexOf(child) - 1,1)
-    })
-    item.appendChild(button)
-    item.classList.add('spell')
+    // delete button
+    item
+      .querySelector('button.delete')
+      .addEventListener(
+        'click',
+        this.removeSpell.bind(this, spell)
+      )
 
-    // append each <span> to the <li>
-    childElements.forEach(el => {
-      item.appendChild(el)
-    })
-    
+    // fav button
+    item
+      .querySelector('button.fav')
+      .addEventListener(
+        'click',
+        this.selectSpellAsFav.bind(this, spell)
+      )
+
+
+
     return item
+  },
+
+  selectSpellAsFav: function(spell, ev){
+    const button = ev.target
+    const item = button.closest('.spell')
+    item.classList.add('favorites')
+    
+  },
+
+  removeSpell: function(spell, ev) {
+    // Remove from the DOM
+    const button = ev.target
+    const item = button.closest('.spell')
+    item.parentNode.removeChild(item)
+
+    // Remove from the array
+    const i = this.spells.indexOf(spell)
+    this.spells.splice(i, 1)
   },
 
   handleSubmit: function(ev) {
@@ -60,28 +79,16 @@ const app =
       name: f.spellName.value,
       level: f.level.value,
     }
-
     this.spells.push(spell)
 
     const item = this.renderItem(spell)
 
     const list = document.querySelector('#spells')
     list.appendChild(item)
-    
-    
 
     f.reset()
+    f.spellName.focus()
   },
-
-  
-
-  
-
-  
-
-
-
-  
 }
 
 app.init()
