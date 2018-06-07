@@ -1,6 +1,4 @@
 const spells = []
-let spellCount = 0
-let buttonCount = 0
 const app = 
 {
   init: function() {
@@ -14,9 +12,6 @@ const app =
     const el = document.createElement('span')
     el.textContent = value
     el.classList.add(name)
-    el.setAttribute("id", 'spell${buttonCount}')
-  
-  
     return el
   },
 
@@ -34,12 +29,12 @@ const app =
     const button = document.createElement('button')
     button.innerText = 'x'
     button.classList.add('button')
-    button.setAttribute("id", buttonCount)
-    buttonCount++
     let sendItem = true
-    button.addEventListener('click', function(ev){
+    button.addEventListener('click', function(ev)
+    {
       const child = ev.target.parentNode
       child.parentNode.removeChild(child)
+      spells.splice(spells.indexOf(child) - 1,1)
     })
     item.appendChild(button)
     item.classList.add('spell')
