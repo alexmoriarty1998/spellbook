@@ -1,13 +1,14 @@
 /*
 this commit was just because I did not want the message to just be a period that was a mistake
 */
-const spells = []
+
 const app = 
 {
   init: function() {
     const form = document.querySelector('form')
     form.addEventListener('submit', ev => {
       this.handleSubmit(ev)
+      this.spells = []
     })
   },
 
@@ -37,7 +38,7 @@ const app =
     {
       const child = ev.target.parentNode
       child.parentNode.removeChild(child)
-      spells.splice(spells.indexOf(child) - 1,1)
+      this.spells.splice(spells.indexOf(child) - 1,1)
     })
     item.appendChild(button)
     item.classList.add('spell')
@@ -60,7 +61,7 @@ const app =
       level: f.level.value,
     }
 
-    spells.push(spell)
+    this.spells.push(spell)
 
     const item = this.renderItem(spell)
 
